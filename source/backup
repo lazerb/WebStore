@@ -1,0 +1,6 @@
+#!/bin/bash
+#Tar and copy files in archive to backup, and backup source files
+rm -f .tareerrors
+tarname="backup_$(date +%d)_$(date +%m)_$(date +%Y).tar"
+tar -cf ../archive/$tarname ../backup/* &> .tarerrors
+cp -rf ./* ../backup
