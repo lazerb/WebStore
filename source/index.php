@@ -9,6 +9,8 @@
 		<center><table style="width:75%">
 		<tr><td>
 			<h1>Spicetopia</h1>
+		</td></tr>
+		<tr><td>
 			<h2>Our mission</h2>
 			<p>
 			Our mission is to supply you with high quality bulk spices.
