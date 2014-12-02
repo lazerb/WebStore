@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 	<head>
 		<?php include("header.php"); ?>
@@ -7,8 +8,13 @@
 		<table style="width : 75%">
 			<tr><td>
 				<h1>spice catalogue</h1>
-			</td></tr>
+			</td></tr>	
+
 	<form action="purchase.py">
+	<?php
+	echo '<input type="hidden" name="username" value="' . $_GET['username'] . '"/>';
+	?>
+
 <?php
 	$maxcols = 3;
 	$fp = fopen("spices.csv", 'r');
@@ -53,7 +59,9 @@
 		}
 	}
 ?>
+
 			</form>
+		
 		</table>
 	</center></body>
 </html>
