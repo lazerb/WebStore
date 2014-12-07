@@ -6,21 +6,31 @@
 	</head>
 	<body><center>
 		<table style="width : 75%">
+			<form action="purchase.py" method="GET">
 			<tr><td>
 				<h1>spice catalogue</h1>
-			</td></tr>	
-
-	<form action="purchase.py">
+			</td><td></td>
+			<td style="text-align:right;">
+				<br>
+				<br>
+				<?php
+					#Check if username is present in the webpage
+					if ($_GET['username'] != "") {
+						echo '<input type="submit" value="Purchase" style="font-size : 40px;;font-family : Verdana, Helvetica, sans-serif">';
+						echo "<br>Logged in as " . $_GET['username'];
+					}
+?>
+			</td>
+			</tr>
 	<?php
-	echo '<input type="hidden" name="username" value="' . $_GET['username'] . '"/>';
-	?>
-
-<?php
+	echo '
+<input type="hidden" name="username" value="' . $_GET['username'] . '"/>';
 	$maxcols = 3;
 	$fp = fopen("spices.csv", 'r');
 	$count = 0;
 	$number = 0;
 	echo '<tr>';
+	#Load spices
 	while($contents = fgetcsv($fp, 1000, ",")) {
 		$name = $contents[0];
 		$quantity = $contents[1];
@@ -28,10 +38,13 @@
 		$url = $contents[3];
 		$description = $contents[4];
 		if ($quantity > 0) {
-			if ($count > 2) {
+			#If amount of spices in store greater than 0
+			if ($count == 0) {
+				#Create new table row
 				echo '<tr>';
 			}
-			echo '<td style="width : 33%">';
+			echo '
+<td style="width : 33%">';
 			echo "
 <div class=\"spicebox\" id=$number>
         <h2 style=\"text-align:center\">$name</h2>
@@ -43,23 +56,20 @@
         </p>
         <div style=\"text-align:center;\">
 		Quantity:<br>
-                <input type=\"integer\" name=\"quantity\" size=3c value=0> g at $price BTC/g
+                <input type=\"integer\" name=\"$name\" size=3c value=0> kg at $price BTC/kg
 		<br>
         </div>
-</div>\n";
+</div>";
 			$number++;
 			echo '</td>';
+			$count++;
 			if ($count > 2) {
 				echo '</tr>';
 				$count = 0;
 			}
-			$count++;
-		} else {
-			echo '</tr>';
 		}
 	}
 ?>
-
 			</form>
 		
 		</table>

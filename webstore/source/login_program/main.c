@@ -81,15 +81,16 @@ int main (int argc, char * argv[]) {
 				
 				if (strncmp(pass,buffer, pcount) == 0) {
 					//append username to loggedin.csv
-					FILE* appending = fopen("../webstore/sourceloggedin.csv", "at");
+					FILE* appending = fopen("../webstore/source/loggedin.csv", "at");
 					
 					int q=0;
 					for (q; q<ucount; q++){
 						fputc(user[q], appending);
 					}
+					fputc('\n', appending);
 
-				char usern[ucount+1];
-				strncpy(usern, user, ucount);
+					char usern[ucount+1];
+					strncpy(usern, user, ucount);
 printf("<html><META http-equiv=\"refresh\" content=\"0;URL=../webstore/source/catalogue.php?username=%s\"></html>", usern);
 					fclose(appending);
 					return 0;

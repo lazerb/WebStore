@@ -4,8 +4,9 @@
 		<?php include("header.php"); ?>
 	</head>
 
-	<body><center>
-		<table "width:75%;">
+	<body>
+		<br>
+		<center><table style="width:75%">
 			<tr> <td>
 				<h1>login</h1>
 				<form name = "input" action="../../cgi-bin/log.cgi" method="POST">
@@ -19,6 +20,7 @@
 					<br>
 				</form>
 			</td></tr>
-	</center></body>
+		</table></center>
+	</body>
 
 <html>

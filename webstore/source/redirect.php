@@ -7,9 +7,11 @@
 	</head>
 	
 	<body>
-		<center>
+		<br>
+		<center><table style="width:75%"><tr><td>
 		<h3>Incorrect username or password</h3>
 		<a href="login.php"> Return to login prompt</a>
+		</td></tr></table>
 		</center>
 	</body>
 </html>

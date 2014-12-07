@@ -2,6 +2,7 @@
 use CGI qw(:standard);
 use CGI::Carp qw(fatalsToBrowser set_message);
 
+#Redirect errors to browser, change message and redirect
 BEGIN {
 	sub errorhandler {
 		$msg = shift;
@@ -26,12 +27,14 @@ die "Full name required." if length($fullname) < 1;
 die "Username not long enough." if length($username) < 1;
 
 open FILE, "+<$userfile" or die "Failed to open file";
+#Load in csv file line by line
 while ($line = <FILE>) {
 	chomp $line;
 	push @data, [split ",", $line];
 }
 close FILE;
 
+#Check if username is in use
 foreach $row (@data) {
 	if ($row->[0] eq $username) {
 		die "Username $row->[0] is already in use.\n";
